@@ -7,7 +7,7 @@ Filebeat is a lightweight shipper for log data, that will automatically crawl yo
 To install and configure Filebeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-filebeat.sh > install-config-filebeat.sh; chmod a+x    install-config-filebeat.sh; ./install-config-filebeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-filebeat.sh > install-config-filebeat.sh; chmod a+x install-config-filebeat.sh; ./install-config-filebeat.sh << your Vizion ELK url here >>
 ````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
