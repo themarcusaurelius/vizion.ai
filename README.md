@@ -10,7 +10,7 @@ If you don't Vizion ELK cluster, [get one started in minutes](https://app.vizion
 
 ### Want to see samples of ES in action?
 
-+ #### [Store and search data using cURL](./curl-guide)
++ #### [Store and search data using cURL](./curl-guide.md)
 
 ### Developer resources
 * https://github.com/elastic/elasticsearch-definitive-guide
