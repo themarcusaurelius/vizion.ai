@@ -6,7 +6,9 @@ Filebeat is a lightweight shipper for log data, that will automatically crawl yo
 
 To install and configure Filebeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
-    curl ec2-54-184-247-238.us-west-2.compute.amazonaws.com/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x    install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-filebeat.sh > install-config-filebeat.sh; chmod a+x    install-config-filebeat.sh; ./install-config-filebeat.sh << your Vizion ELK url here >>
+````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
 
@@ -26,7 +28,9 @@ Metricbeat is a lightweight shipper for metric data, that will send system data 
 
 To install and configure Metricbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
-    curl ec2-54-184-247-238.us-west-2.compute.amazonaws.com/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x    install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x  install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
     
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
 
@@ -47,7 +51,9 @@ Auditbeat is a lightweight shipper that you can install on your servers to audit
 
 To install and configure Auditbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
-    curl ec2-54-184-247-238.us-west-2.compute.amazonaws.com/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x    install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-auditbeat.sh > install-config-auditbeat.sh; chmod a+x  install-config-auditbeat.sh; ./install-config-auditbeat.sh << your Vizion ELK url here >>
+````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
 
@@ -64,7 +70,9 @@ Heartbeat is a lightweight daemon that you install on a remote server to periodi
 
 To install and configure Heartbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
-    curl ec2-54-184-247-238.us-west-2.compute.amazonaws.com/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x    install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-heartbeat.sh > install-config-heartbeat.sh; chmod a+x  install-config-heartbeat.sh; ./install-config-heartbeat.sh << your Vizion ELK url here >>
+````
 
 The intallation script will prompt you to select the proper environment.
 
@@ -79,7 +87,9 @@ Packetbeat is a real-time network packet analyzer that you can use with your Viz
 
 To install and configure Packetbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
 
-    curl ec2-54-184-247-238.us-west-2.compute.amazonaws.com/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x    install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+````
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-packetbeat.sh > install-config-packetbeat.sh; chmod a+x  install-config-packetbeat.sh; ./install-config-packetbeat.sh << your Vizion ELK url here >>
+````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
 
