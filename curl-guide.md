@@ -31,3 +31,5 @@ curl -XPUT '< Your Elasticsearch URL >/person/_doc/1'
  ````
  curl -XPOST '<Your Elasticsearch URL >/index ' -d <path to data>.json
  ````
+## Searching an Index
+Elasticsearch accepts queries in the form of JSON, often with nested layers of specifications. First it must be declared if the search is a query or if it a filter. The difference between the two is that a query calculates a score for each document based on the relevance to search criteria, then returns a ranked list. A filter merely filter out all documents that don't meet a certain criteria. This is a yes or no proposition, needs no ranking, and thus needs less computation.
