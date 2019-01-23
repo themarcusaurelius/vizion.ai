@@ -12,7 +12,7 @@ Beats is the platform for single-purpose data shippers. They send data from your
 
 Your beat is configured with a YAML file, located at `/etc/<beat name>/<beat name>.yml` and comes set with sensible defaults. The main thing to configure is the connection to your Vizion ELK app and to Kibana (to install dashboards). To do this, you will need to separate your Vizion Elk url into components to get your username, password, and appId.
 
-![graph on parsing vizion ELK URL](./assets/images/app-credentials-split.png)
+![graph on parsing vizion ELK URL](./images/app-credentials-split.png)
 
 Enter these credentials in the sections for Kibana, and Outputs - Elasticsearch
 ````
