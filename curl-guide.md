@@ -58,4 +58,35 @@ curl -XGET "< ES URL >/< index (optional)>/_search" -H 'Content-Type: applicatio
   }
 }'
 ````
-Note also that if multiple words are used as search terms, they are tokenized and searched as if separate terms. Remember that a query calculates relevance scores for each document in the index and returns the documents with the highest relevance scores.
+Note also that if multiple words are used as search terms, they are tokenized and searched as if separate terms. Remember that a query calculates relevance scores for each document in the index and returns the documents with the highest relevance scores. This means that the query will return documents that may only contain some of the search terms you provided and the terms may not appear in the order you specified. To do that, you should use a 'match_phrase' query:
+
+#### Match Phrase
+The 'match_phrase' query should be used when searching for multiple words in a specific order, here is an example of searching a field for the phrase 'cool as a cucumber'
+````
+curl -XGET "< ES URL >/< index >/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "match_phrase": {
+      "< field >" : "cool as a cucumber" 
+    }
+  }
+}'
+````
+This will return high scores for documents that have this whole phrase, and not for just having the word 'cucumber' in it.
+
+## Range Queries
+Elasticsearch allows you to search for documents where number and date data types fall within specified ranges. For this, use a 'range' query, specify the field we want to search and then pass an object containing the constraints. In this example, I will search for a documents in the 'book' index, that have between 330 and 360 pages (inclusive).
+````
+curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
+'{
+  "filter": {
+    "range": {
+      "pages" : {
+        "gte": 330,
+        "lte": 360
+      }
+    }
+  }
+}'
+````
+
