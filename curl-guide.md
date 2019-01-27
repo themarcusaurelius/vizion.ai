@@ -74,12 +74,12 @@ curl -XGET "< ES URL >/< index >/_search" -H 'Content-Type: application/json' -d
 ````
 This will return high scores for documents that have this whole phrase, and not for just having the word 'cucumber' in it.
 
-## Range Queries
+#### Range Queries
 Elasticsearch allows you to search for documents where number and date data types fall within specified ranges. For this, use a 'range' query, specify the field we want to search and then pass an object containing the constraints. In this example, I will search for a documents in the 'book' index, that have between 330 and 360 pages (inclusive).
 ````
 curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
 '{
-  "filter": {
+  "query": {
     "range": {
       "pages" : {
         "gte": 330,
@@ -89,4 +89,35 @@ curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
   }
 }'
 ````
+As you see, we used an object to specify the range to search for within in the 'pages' field. We used 'gte' to specify 'greater than or equal to', 'lte' for 'less than or equal to', but could have also used 'gt' or 'lt' for exclusive ranges.
 
+#### Wildcard/Regex Queries
+Elasticsearch has built-in capabilities for wildcard searches. SImply specify if you are doing a wildcard search and use a '?' to represent any one character or '\*' to represent any number of characters. For example 'the?' would match 'they, them, then, etc.' and in the example below, we will be searching an index of patients for anyone who has a condition that encs in 'phobia'.
+````
+curl -XGET "< ES URL >/patient/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "wildcard": {
+      "condition" : "*phobia"
+      }
+    }
+  }
+}'
+````
+You have even more capabilities by using the Regex search. Here we will search for a book whose title begins with one or more numerals.
+````
+curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "regex": {
+      "title" : "^[0-9]+"
+      }
+    }
+  }
+}'
+````
+Note: Wildcards and regex searches can require a lot of computation. Be careful not to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
+
+## Compund Queries
+
+## Sorting and Aggregating Results
