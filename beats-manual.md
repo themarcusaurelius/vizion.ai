@@ -54,7 +54,7 @@ output.elasticsearch:
 Be sure to include port 443 at the end of you Vizion ELK url as above.
 
 ## Modules
-Filebeat and Metricbeat come with optional modules, which, when enabled, add functionality to the beat. For example, Metricbeat has a Docker module that will send Metrics on Docker and any containers stored on your machine.
+Filebeat and Metricbeat come with optional modules, which, when enabled, add functionality to the beat. For example, Metricbeat has a Docker module that will send metrics on Docker and any containers stored on your machine.
 To see what modules are available (as well as which have been enabled), enter:
 
 `<beat name> modules list` or `./<beat name> modules list`
