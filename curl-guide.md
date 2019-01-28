@@ -1,6 +1,6 @@
 # Using cURL to Interact With Your Vizion-ELK API
-Elasticsearch operates as a REST API and be interfaced with any number of tools that make http requests. For this guide,
-we will use cURL, available in the Mac or Linux console, to illustrate some basic commands. An even easier way to practice is to open up Kibana and use 'Dev Tools' which can be found on the left navigation bar.
+Elasticsearch operates as a REST API, and be interfaced with any number of tools that make http requests. For this guide,
+we will use cURL, available in the Mac or Linux console, to illustrate some basic commands. For an even easier way to practice, you can open up Kibana and use 'Dev Tools' which can be found on the left navigation bar.
 
 ![Find Dev Tools](./images/find-dev-tools.png)
 
@@ -120,6 +120,48 @@ Note: Wildcards and regex searches can require a lot of computation. Be careful 
 
 ## Compund Queries
 Elasticsearch supports compound queries, which allow a higher level of flexibility and complexity within your searches. The 'bool' query allows you to serch for documents that satisfy a combination of requirements. For example, the following will search for a document in the 'book' index that has the term "voice" in the 'title' field, but does not contain the phrase "coming of age" in the 'description' field.
-
+````
+curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "bool": {
+      "must" : {
+        "match": {
+          "title" : "voice"
+        }
+      },
+      must_not: {
+        "match_phrase": {
+          "description" : "coming of age"
+        }
+      }
+    }
+  }
+}'
+````
+Notice the use of 'must' and 'must_not' clauses above. They work as you might expect and only return results that satisfy the criteria nested within. Also available is 'should' which boosts the scores of documents that meet the criteria but does not explicitly require them. 
 
 ## Sorting and Aggregating Results
+
+#### Source Filtering
+You may have noticed that the results of your queries contain a "\_source" object, which contains the data put into that document at creation/update. When searching, you can specify a set of fields for this object to include by passing in a "\_source" clause with an array of the desired fields. Here is a query that will return just the first and last names of all students with a grade above 90.
+````
+curl -XGET "< ES URL >/studnets/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "_source": ["firstName", "lastName"],
+    "range": {  
+      "grade": {
+        "gt": 90
+      }
+    }
+  }
+}'
+````
+#### Pagination
+
+#### Sorting
+
+#### Aggregations
+
+
