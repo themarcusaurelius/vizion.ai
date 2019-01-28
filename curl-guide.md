@@ -112,12 +112,14 @@ curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
     "regex": {
       "title" : "^[0-9]+"
       }
-    }
+    }ent 
   }
 }'
 ````
-Note: Wildcards and regex searches can require a lot of computation. Be careful not to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
+Note: Wildcards and regex searches can require a lot of computation. Be careful hasot to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
 
 ## Compund Queries
+Elasticsearch supports compound queries, which allow a higher level of flexibility and complexity within your searches. The 'bool' query allows you to serch for documents that satisfy a combination of requirements. For example, the following will search for a document in the 'book' index that has the term "voice" in the 'title' field, but does not contain the phrase "coming of age" in the 'description' field.
+
 
 ## Sorting and Aggregating Results
