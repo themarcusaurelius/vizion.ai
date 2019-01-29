@@ -118,7 +118,7 @@ curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
 ````
 Note: Wildcards and regex searches can require a lot of computation. Be careful hasot to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
 
-## Compund Queries
+## Compound Queries
 Elasticsearch supports compound queries, which allow a higher level of flexibility and complexity within your searches. The 'bool' query allows you to serch for documents that satisfy a combination of requirements. For example, the following will search for a document in the 'book' index that has the term "voice" in the 'title' field, but does not contain the phrase "coming of age" in the 'description' field.
 ````
 curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
@@ -144,7 +144,7 @@ Notice the use of 'must' and 'must_not' clauses above. They work as you might ex
 ## Sorting and Aggregating Results
 
 #### Source Filtering
-You may have noticed that the results of your queries contain a "\_source" object, which contains the data put into that document at creation/update. When searching, you can specify a set of fields for this object to include by passing in a "\_source" clause with an array of the desired fields. Here is a query that will return just the first and last names of all students with a grade above 90.
+You may have noticed that the results of your queries contain a '\_source' object, which contains the data put into that document at creation/update. When searching, you can specify a set of fields for this object to include by passing in a '\_source' clause with an array of the desired fields. Here is a query that will return just the first and last names of all students with a grade above 90.
 ````
 curl -XGET "< ES URL >/studnets/_search" -H 'Content-Type: application/json' -d
 '{
@@ -159,9 +159,62 @@ curl -XGET "< ES URL >/studnets/_search" -H 'Content-Type: application/json' -d
 }'
 ````
 #### Pagination
+When expecting large numbers of results, you will probably want to use pagination to work with those results in managable chunks. Using the 'size' clause in your search will specify how many results to return. Note that 'size' **defaults to 10, meaning you will see only the top 10 results by default.** The 'from' clause specifies where to start returning results, with the first result numbered 0 (the default if you don't include a 'from').
+````
+curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "size": 20,
+    "from": 20,
+    "match": {  
+      "title": "girl"
+    }
+  }
+}'
+````
+Above is an example of a search for books whose title includes the word 'girl'. The 'size' clause specifies that a maximum of 20 documents will be returned, starting at the beginning of the secong "page" (matches 0-19 making up the first page).
 
 #### Sorting
+With the 'sort' clause, you can specify a field to sort by and whether to sort it ascending or descending. Here we will search our 'book' index again, this time for titles that include the word 'night'. We want the results to be sorted by the datetime field 'dateOfPublication' and are concerned with the newest titles, thus usin 'desc' for descending order.
+````
+curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "sort": {
+      "dateOfPublication": "desc"
+    }
+    "match": {  
+      "title": "girl"
+    }
+  }
+}'
+````
 
 #### Aggregations
-
-
+Elasticsearch has some useful tools for aggregating numeric fields. An 'aggs' query can return the 'min', 'max', 'avg', 'sum', and 'count' of a numeric field of a set of documents. Below we will find the low, high, and average scores.
+````
+curl -XGET "< ES URL >/test_scores/_search" -H 'Content-Type: application/json' -d
+'{
+  "query": {
+    "size": 0,
+    "aggs": {
+      "low_score": {
+        "min": {
+          "field": "score"
+        }
+      },
+       "high_score": {
+        "max": {
+          "field": "score"
+        }
+      },
+       "average_score": {
+        "avg": {
+          "field": "score"
+        }
+      }
+    }
+  }
+}'
+````
+Note that the fields 'min_score', 'max_score', etc. are arbitrary names that we have assigned to each aggregation. This is what that agg will be labeled in the results. Note also that we have set 'size' to 0. This way the search doesn't return any documents themselves, only the aggregations.
