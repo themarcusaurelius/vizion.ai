@@ -47,7 +47,7 @@ Retrieving the JSON data for a document is easy with the document id:
 #### Query vs. Filter
 Elasticsearch accepts queries in the form of JSON, often with nested layers of specifications. First it must be declared if the search is a query or if it is a filter. The difference between the two is that a query calculates a score for each document based on the relevance to search criteria, then returns a ranked list. A filter merely filter out all documents that don't meet a certain criteria. This is a yes or no proposition, needs no ranking, and thus needs less computation. 
 #### The Match Query
-Let's check out the most basic query, the match query. The query looks for the provided search term(s) withing the field specified. Notice this query uses the '\_search' endpoint and an optional parameter to specify the index to search in. 
+Let's check out the most basic query, the match query. The query looks for the provided search term(s) within the field specified. Notice this query uses the '\_search' endpoint and an optional parameter to specify the index to search in. 
 ````
 curl -XGET "< ES URL >/< index (optional)>/_search" -H 'Content-Type: application/json' -d
 '{
@@ -92,7 +92,7 @@ curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
 As you see, we used an object to specify the range to search for within in the 'pages' field. We used 'gte' to specify 'greater than or equal to', 'lte' for 'less than or equal to', but could have also used 'gt' or 'lt' for exclusive ranges.
 
 #### Wildcard/Regex Queries
-Elasticsearch has built-in capabilities for wildcard searches. SImply specify if you are doing a wildcard search and use a '?' to represent any one character or '\*' to represent any number of characters. For example 'the?' would match 'they, them, then, etc.' and in the example below, we will be searching an index of patients for anyone who has a condition that encs in 'phobia'.
+Elasticsearch has built-in capabilities for wildcard searches. Simply specify if you are doing a wildcard search and use a '?' to represent any one character or '\*' to represent any number of characters. For example 'the?' would match 'they, them, then, etc.' and in the example below, we will be searching an index of patients for anyone who has a condition that ends in 'phobia'.
 ````
 curl -XGET "< ES URL >/patient/_search" -H 'Content-Type: application/json' -d
 '{
@@ -116,7 +116,7 @@ curl -XGET "< ES URL >/book/_search" -H 'Content-Type: application/json' -d
   }
 }'
 ````
-Note: Wildcards and regex searches can require a lot of computation. Be careful hasot to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
+Note: Wildcards and regex searches can require a lot of computation. Be careful not to make them too general (such as a '\*' wildcard after only a couple of letters) or else your searches can become very very slow.
 
 ## Compound Queries
 Elasticsearch supports compound queries, which allow a higher level of flexibility and complexity within your searches. The 'bool' query allows you to serch for documents that satisfy a combination of requirements. For example, the following will search for a document in the 'book' index that has the term "voice" in the 'title' field, but does not contain the phrase "coming of age" in the 'description' field.
