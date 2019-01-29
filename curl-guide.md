@@ -47,7 +47,7 @@ Retrieving the JSON data for a document is easy with the document id:
 #### Query vs. Filter
 Elasticsearch accepts queries in the form of JSON, often with nested layers of specifications. First it must be declared if the search is a query or if it is a filter. The difference between the two is that a query calculates a score for each document based on the relevance to search criteria, then returns a ranked list. A filter merely filter out all documents that don't meet a certain criteria. This is a yes or no proposition, needs no ranking, and thus needs less computation. 
 #### The Match Query
-Let's check out the most basic query, the match query. The query looks for the provided search term(s) withing the field specified. Notice this query uses the '\_search' endpoint and an optional parameter to specify the index to search in. 
+Let's check out the most basic query, the match query. The query looks for the provided search term(s) within the field specified. Notice this query uses the '\_search' endpoint and an optional parameter to specify the index to search in. 
 ````
 curl -XGET "< ES URL >/< index (optional)>/_search" -H 'Content-Type: application/json' -d
 '{
