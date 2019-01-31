@@ -24,7 +24,6 @@ fi
 
 USERNAME_REGEX="https://([a-zA-Z0-9]*):"
 PASSWORD_REGEX=":([a-zA-Z0-9]*)@"
-API_KEY_REGEX="@([a-zA-Z0-9]*).es"
 
 if [[ $1 =~ $USERNAME_REGEX ]]; then
   USERNAME=${BASH_REMATCH[1]}
@@ -37,13 +36,6 @@ if [[ $1 =~ $PASSWORD_REGEX ]]; then
   PASSWORD=${BASH_REMATCH[1]}
 else
   echo "URL could not be parsed. Please be sure to include full URL"
-  exit 1
-fi
-
-if [[ $1 =~ $API_KEY_REGEX ]]; then
-  API_KEY=${BASH_REMATCH[1]}
-else
-  echo "URL could not be parsed. Please be sure to include full URL" 
   exit 1
 fi
 
@@ -113,7 +105,7 @@ echo "  # Kibana Host" >> /etc/metricbeat/metricbeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/metricbeat/metricbeat.yml
 echo "  # In case you specify and additional path, the scheme is required: echo http://localhost:5601/path" >> /etc/metricbeat/metricbeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/metricbeat/metricbeat.yml
-echo "  host: \"https://app.vizion.ai:443\"" >> /etc/metricbeat/metricbeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana\"" >> /etc/metricbeat/metricbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/metricbeat/metricbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
@@ -142,7 +134,7 @@ echo "" >> /etc/metricbeat/metricbeat.yml
 echo "#-------------------------- Elasticsearch output ------------------------------" >> /etc/metricbeat/metricbeat.yml
 echo "output.elasticsearch:" >> /etc/metricbeat/metricbeat.yml
 echo "  # Array of hosts to connect to." >> /etc/metricbeat/metricbeat.yml
-echo "  hosts: [\"$1:443\"]" >> /etc/metricbeat/metricbeat.yml
+echo "  hosts: [\"$1\"]" >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
 echo "  # Optional protocol and basic auth credentials." >> /etc/metricbeat/metricbeat.yml
 echo "  protocol: \"https\"" >> /etc/metricbeat/metricbeat.yml
@@ -150,8 +142,6 @@ echo "  username: \"${USERNAME}\"" >> /etc/metricbeat/metricbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/metricbeat/metricbeat.yml
 echo "  ssl.enabled: true" >> /etc/metricbeat/metricbeat.yml
 echo "  ssl.verification_mode: none" >> /etc/metricbeat/metricbeat.yml
-echo "  headers:" >> /etc/metricbeat/metricbeat.yml
-echo "    vizion-es-app-id: ${API_KEY}" >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/metricbeat/metricbeat.yml
 echo "#output.logstash:" >> /etc/metricbeat/metricbeat.yml
