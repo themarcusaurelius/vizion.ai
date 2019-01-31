@@ -28,14 +28,14 @@ PASSWORD_REGEX=":([a-zA-Z0-9]*)@"
 if [[ $1 =~ $USERNAME_REGEX ]]; then
   USERNAME=${BASH_REMATCH[1]}
 else
-  echo "URL could not be  (username part). Please be sure to include full URL"
+  echo "URL could not be parsed. Please be sure to include full URL"
   exit 1
 fi
 
 if [[ $1 =~ $PASSWORD_REGEX ]]; then
   PASSWORD=${BASH_REMATCH[1]}
 else
-  echo "URL could not be parsed (password part). Please be sure to include full URL"
+  echo "URL could not be parsed. Please be sure to include full URL"
   exit 1
 fi
 
