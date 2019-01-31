@@ -40,13 +40,6 @@ else
   exit 1
 fi
 
-if [[ $1 =~ $API_KEY_REGEX ]]; then
-  API_KEY=${BASH_REMATCH[1]}
-else
-  echo "URL could not be parsed. Please be sure to include full URL" 
-  exit 1
-fi
-
 echo "###################### Filebeat Configuration Example #########################" > /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "# This file is an example configuration file highlighting only the most common" >> /etc/filebeat/filebeat.yml
@@ -160,7 +153,7 @@ echo "  # Kibana Host" >> /etc/filebeat/filebeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/filebeat/filebeat.yml
 echo "  # In case you specify and additional path, the scheme is required: http://localhost:5601/path" >> /etc/filebeat/filebeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/filebeat/filebeat.yml
-echo "  host: \"https://app.vizion.ai:443\"" >> /etc/filebeat/filebeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana \"" >> /etc/filebeat/filebeat.yml
 echo "  username: ${USERNAME}" >> /etc/filebeat/filebeat.yml
 echo "  password: ${PASSWORD}" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
@@ -188,7 +181,7 @@ echo "" >> /etc/filebeat/filebeat.yml
 echo "#-------------------------- Elasticsearch output ------------------------------" >> /etc/filebeat/filebeat.yml
 echo "output.elasticsearch:" >> /etc/filebeat/filebeat.yml
 echo "  # Array of hosts to connect to." >> /etc/filebeat/filebeat.yml
-echo "  hosts: [\"$1:443\"]" >> /etc/filebeat/filebeat.yml
+echo "  hosts: [\"$1\"]" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo " # Optional protocol and basic auth credentials." >> /etc/filebeat/filebeat.yml
 echo "  protocol: \"https\"" >> /etc/filebeat/filebeat.yml
@@ -197,8 +190,6 @@ echo "  password: ${PASSWORD}" >> /etc/filebeat/filebeat.yml
 echo "  ssl.enabled: true" >> /etc/filebeat/filebeat.yml
 echo "  ssl.verification_mode: none" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
-echo "  headers:" >> /etc/metricbeat/metricbeat.yml
-echo "    vizion-es-app-id: ${API_KEY}" >> /etc/metricbeat/metricbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/filebeat/filebeat.yml
 echo "#output.logstash:" >> /etc/filebeat/filebeat.yml
 echo "  # The Logstash hosts" >> /etc/filebeat/filebeat.yml
