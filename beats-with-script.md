@@ -24,12 +24,12 @@ For debugging, you can view your Filebeat error logs at `/var/log/filebeat/fileb
 
 
 ## Metricbeat
-Metricbeat is a lightweight shipper for metric data, that will send system data and metrics to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-overview.html)
+Metricbeat is a lightweight shipper for metric data, that will send system data and metrics to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-overview.html)
 
-To install and configure Metricbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Metricbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x  install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x  install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion Elastic url here >>
 ````
     
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
