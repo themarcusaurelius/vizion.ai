@@ -40,19 +40,19 @@ Modules available: *Aerospike, Apache, Ceph, Couchbase, Docker, Dropwizard, Elas
 
 [More on Metricbeat modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Metricbeat error logs at `/var/log/metricbeat/metricbeat` or change the configuration at `/etc/metricbeat/metricbeat.yml`.
 
 
 
 ## Auditbeat
-Auditbeat is a lightweight shipper that you can install on your servers to audit the activities of users and processes on your systems and send the data to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-overview.html)
+Auditbeat is a lightweight shipper that you can install on your servers to audit the activities of users and processes on your systems and send the data to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-overview.html)
 
-To install and configure Auditbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Auditbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-auditbeat.sh > install-config-auditbeat.sh; chmod a+x  install-config-auditbeat.sh; ./install-config-auditbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-auditbeat.sh > install-config-auditbeat.sh; chmod a+x  install-config-auditbeat.sh; ./install-config-auditbeat.sh << your Vizion Elastic url here >>
 ````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
