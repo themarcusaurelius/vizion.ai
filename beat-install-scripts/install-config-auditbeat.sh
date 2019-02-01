@@ -24,7 +24,6 @@ fi
 
 USERNAME_REGEX="https://([a-zA-Z0-9]*):"
 PASSWORD_REGEX=":([a-zA-Z0-9]*)@"
-API_KEY_REGEX="@([a-zA-Z0-9]*).es"
 
 if [[ $1 =~ $USERNAME_REGEX ]]; then
   USERNAME=${BASH_REMATCH[1]}
@@ -40,12 +39,6 @@ else
   exit 1
 fi
 
-if [[ $1 =~ $API_KEY_REGEX ]]; then
-  API_KEY=${BASH_REMATCH[1]}
-else
-  echo "URL could not be parsed. Please be sure to include full URL" 
-  exit 1
-fi
 
 echo "###################### Auditbeat Configuration Example #########################" > /etc/auditbeat/auditbeat.yml
 echo "" >> /etc/auditbeat/auditbeat.yml
@@ -138,7 +131,7 @@ echo "  # Kibana Host" >> /etc/auditbeat/auditbeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/auditbeat/auditbeat.yml
 echo "  # In case you specify and additional path, the scheme is required: http://localhost:5601/path" >> /etc/auditbeat/auditbeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/auditbeat/auditbeat.yml
-echo "  host: \"https://app.vizion.ai:443\"" >> /etc/auditbeat/auditbeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana\"" >> /etc/auditbeat/auditbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/auditbeat/auditbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/auditbeat/auditbeat.yml
 echo "" >> /etc/auditbeat/auditbeat.yml
@@ -167,15 +160,13 @@ echo "" >> /etc/auditbeat/auditbeat.yml
 echo "#-------------------------- Elasticsearch output ------------------------------" >> /etc/auditbeat/auditbeat.yml
 echo "output.elasticsearch:" >> /etc/auditbeat/auditbeat.yml
 echo "  # Array of hosts to connect to." >> /etc/auditbeat/auditbeat.yml
-echo "  hosts: [\"$1:443\"]" >> /etc/auditbeat/auditbeat.yml
+echo "  hosts: [\"$1\"]" >> /etc/auditbeat/auditbeat.yml
 echo "" >> /etc/auditbeat/auditbeat.yml
 echo "  # Optional protocol and basic auth credentials." >> /etc/auditbeat/auditbeat.yml
 echo "  #protocol: \"https\"" >> /etc/auditbeat/auditbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/auditbeat/auditbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/auditbeat/auditbeat.yml
-echo "  ssl.verification_mode: none" >> /etc/auditbeat/auditbeat.yml
-echo "  headers:" >> /etc/auditbeat/auditbeat.yml
-echo "    vizion-es-app-id: cpjoeiifd000101m3i4tz8dm5" >> /etc/auditbeat/auditbeat.yml
+echo "  ssl.verification_mode: none" >> /etc/auditbeat/auditbeat.yml\
 echo "  timeout: 500" >> /etc/auditbeat/auditbeat.yml
 echo "" >> /etc/auditbeat/auditbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/auditbeat/auditbeat.yml

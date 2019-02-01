@@ -26,7 +26,6 @@ fi
 
 USERNAME_REGEX="https://([a-zA-Z0-9]*):"
 PASSWORD_REGEX=":([a-zA-Z0-9]*)@"
-API_KEY_REGEX="@([a-zA-Z0-9]*).es"
 
 if [[ $1 =~ $USERNAME_REGEX ]]; then
   USERNAME=${BASH_REMATCH[1]}
@@ -42,12 +41,6 @@ else
   exit 1
 fi
 
-if [[ $1 =~ $API_KEY_REGEX ]]; then
-  API_KEY=${BASH_REMATCH[1]}
-else
-  echo "URL could not be parsed. Please be sure to include full URL" 
-  exit 1
-fi
 
 echo "#################### Packetbeat Configuration Example #########################" > /etc/packetbeat/packetbeat.yml
 echo "" >> /etc/packetbeat/packetbeat.yml
@@ -196,7 +189,7 @@ echo "  # Kibana Host" >> /etc/packetbeat/packetbeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/packetbeat/packetbeat.yml
 echo "  # In case you specify and additional path, the scheme is required: http://localhost:5601/path" >> /etc/packetbeat/packetbeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/packetbeat/packetbeat.yml
-echo "  host: \"https://app.vizion.ai:443\"" >> /etc/packetbeat/packetbeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana\"" >> /etc/packetbeat/packetbeat.yml
 echo "  protocol: \"https\"" >> /etc/packetbeat/packetbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/packetbeat/packetbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/packetbeat/packetbeat.yml
@@ -226,15 +219,13 @@ echo "" >> /etc/packetbeat/packetbeat.yml
 echo "#-------------------------- Elasticsearch output ------------------------------" >> /etc/packetbeat/packetbeat.yml
 echo "output.elasticsearch:" >> /etc/packetbeat/packetbeat.yml
 echo "  # Array of hosts to connect to." >> /etc/packetbeat/packetbeat.yml
-echo "  hosts: [\"$1:443\"]" >> /etc/packetbeat/packetbeat.yml
+echo "  hosts: [\"$1\"]" >> /etc/packetbeat/packetbeat.yml
 echo "" >> /etc/packetbeat/packetbeat.yml
 echo "  # Optional protocol and basic auth credentials." >> /etc/packetbeat/packetbeat.yml
 echo "  #protocol: \"https\"" >> /etc/packetbeat/packetbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/packetbeat/packetbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/packetbeat/packetbeat.yml
 echo "  ssl.verification_mode: none" >> /etc/packetbeat/packetbeat.yml
-echo "  headers:" >> /etc/packetbeat/packetbeat.yml
-echo "    vizion-es-app-id: ${API_KEY}" >> /etc/packetbeat/packetbeat.yml
 echo "  timeout: 500" >> /etc/packetbeat/packetbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/packetbeat/packetbeat.yml
 echo "#output.logstash:" >> /etc/packetbeat/packetbeat.yml

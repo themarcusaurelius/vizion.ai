@@ -24,7 +24,6 @@ fi
 
 USERNAME_REGEX="https://([a-zA-Z0-9]*):"
 PASSWORD_REGEX=":([a-zA-Z0-9]*)@"
-API_KEY_REGEX="@([a-zA-Z0-9]*).es"
 
 if [[ $1 =~ $USERNAME_REGEX ]]; then
   USERNAME=${BASH_REMATCH[1]}
@@ -40,12 +39,6 @@ else
   exit 1
 fi
 
-if [[ $1 =~ $API_KEY_REGEX ]]; then
-  API_KEY=${BASH_REMATCH[1]}
-else
-  echo "URL could not be parsed. Please be sure to include full URL" 
-  exit 1
-fi
 
 echo "############################# Heartbeat ######################################" > /etc/heartbeat/heartbeat.yml
 echo "" >> /etc/heartbeat/heartbeat.yml
@@ -107,7 +100,7 @@ echo "  # Kibana Host" >> /etc/heartbeat/heartbeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/heartbeat/heartbeat.yml
 echo "  # In case you specify and additional path, the scheme is required: http://localhost:5601/path" >> /etc/heartbeat/heartbeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/heartbeat/heartbeat.yml
-echo "  host: \"https://app.vizion.ai:443\"" >> /etc/heartbeat/heartbeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana\"" >> /etc/heartbeat/heartbeat.yml
 echo "  protocol: \"https\"" >> /etc/heartbeat/heartbeat.yml
 echo "  username: "${USERNAME}"" >> /etc/heartbeat/heartbeat.yml
 echo "  password: "${PASSWORD}"" >> /etc/heartbeat/heartbeat.yml
@@ -137,15 +130,13 @@ echo "" >> /etc/heartbeat/heartbeat.yml
 echo "#-------------------------- Elasticsearch output ------------------------------" >> /etc/heartbeat/heartbeat.yml
 echo "output.elasticsearch:" >> /etc/heartbeat/heartbeat.yml
 echo "  # Array of hosts to connect to." >> /etc/heartbeat/heartbeat.yml
-echo "  hosts: [\"$1:443\"]" >> /etc/heartbeat/heartbeat.yml
+echo "  hosts: [\"$1\"]" >> /etc/heartbeat/heartbeat.yml
 echo "" >> /etc/heartbeat/heartbeat.yml
 echo "  # Optional protocol and basic auth credentials." >> /etc/heartbeat/heartbeat.yml
 echo "  #protocol: \"https\"" >> /etc/heartbeat/heartbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/heartbeat/heartbeat.yml
 echo "  passowrd: \"${PASSWORD}\"" >> /etc/heartbeat/heartbeat.yml
 echo "  ssl.verification_mode: none" >> /etc/heartbeat/heartbeat.yml
-echo "  headers:" >> /etc/heartbeat/heartbeat.yml
-echo "    vizion-es-app-id: ${API_KEY}" >> /etc/heartbeat/heartbeat.yml
 echo "  timeout: 500" >> /etc/heartbeat/heartbeat.yml
 echo "" >> /etc/heartbeat/heartbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/heartbeat/heartbeat.yml
