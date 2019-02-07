@@ -26,10 +26,10 @@ setup.kibana:
   # Scheme and port can be left out and will be set to the default (http and 5601)
   # In case you specify and additional path, the scheme is required: http://localhost:5601/path
   # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: "https://app.vizion.ai:443"
+  host: "https://app.vizion.ai:443/kibana"
   protocol: "https"
-  username: "<< your Vizion ELK username >>"
-  password: "<< your Vizion ELK password >>"
+  username: "<< your Vizion Elastic App username >>"
+  password: "<< your Vizion Elastic App password >>"
 ````
 and
 ````
@@ -40,18 +40,15 @@ and
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["<< your Vizion ELK url >>:443"]
+  hosts: ["<< your Vizion ELK url >>"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
   username: "<< your Vizion ELK username >>"
   password: "<< your Vizion ELK password >>"
   ssl.verification_mode: none
-  headers:
-    vizion-es-app-id: << your Vizion ELK appId >>
   timeout: 500
 ````
-Be sure to include port 443 at the end of you Vizion ELK url as above.
 
 ## Modules
 Filebeat and Metricbeat come with optional modules, which, when enabled, add functionality to the beat. For example, Metricbeat has a Docker module that will send metrics on Docker and any containers stored on your machine.

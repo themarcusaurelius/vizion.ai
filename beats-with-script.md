@@ -2,12 +2,12 @@
 Beats is the platform for single-purpose data shippers. They send data from your machines and systems to Elasticsearch, which can be then be seen in Kibana with built-in dashboards and visualizations. Each Beat type also has a set of modules that provide additional functionality and can be enabled easily.
 
 ## Filebeat
-Filebeat is a lightweight shipper for log data, that will automatically crawl your log files and send log data to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
+Filebeat is a lightweight shipper for log data, that will automatically crawl your log files and send log data to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
 
-To install and configure Filebeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Filebeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-filebeat.sh > install-config-filebeat.sh; chmod a+x install-config-filebeat.sh; ./install-config-filebeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-filebeat.sh > install-config-filebeat.sh; chmod a+x install-config-filebeat.sh; ./install-config-filebeat.sh << your Vizion Elastic url here >>
 ````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
@@ -18,18 +18,18 @@ Modules available: *Apache2, Auditd, Elasticsearch, haproxy, Icinga, IIS, Kafka,
 
 [More on Filebeat modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules-overview.html)
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Filebeat error logs at `/var/log/filebeat/filebeat` or change the configuration at `/etc/filebeat/filebeat.yml`.
 
 
 ## Metricbeat
-Metricbeat is a lightweight shipper for metric data, that will send system data and metrics to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-overview.html)
+Metricbeat is a lightweight shipper for metric data, that will send system data and metrics to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-overview.html)
 
-To install and configure Metricbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Metricbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x  install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-metricbeat.sh > install-config-metricbeat.sh; chmod a+x  install-config-metricbeat.sh; ./install-config-metricbeat.sh << your Vizion Elastic url here >>
 ````
     
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
@@ -40,19 +40,19 @@ Modules available: *Aerospike, Apache, Ceph, Couchbase, Docker, Dropwizard, Elas
 
 [More on Metricbeat modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Metricbeat error logs at `/var/log/metricbeat/metricbeat` or change the configuration at `/etc/metricbeat/metricbeat.yml`.
 
 
 
 ## Auditbeat
-Auditbeat is a lightweight shipper that you can install on your servers to audit the activities of users and processes on your systems and send the data to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-overview.html)
+Auditbeat is a lightweight shipper that you can install on your servers to audit the activities of users and processes on your systems and send the data to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-overview.html)
 
-To install and configure Auditbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Auditbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-auditbeat.sh > install-config-auditbeat.sh; chmod a+x  install-config-auditbeat.sh; ./install-config-auditbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-auditbeat.sh > install-config-auditbeat.sh; chmod a+x  install-config-auditbeat.sh; ./install-config-auditbeat.sh << your Vizion Elastic url here >>
 ````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
@@ -61,38 +61,38 @@ Auditbeat comes with two modules already running - Auditd and File Integrity. Fi
 
 [More on Auditbeat modules](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-modules.html)
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Auditbeat error logs at `/var/log/auditbeat/auditbeat` or change the configuration at `/etc/auditbeat/auditbeat.yml`.
 
 ## Heartbeat
-Heartbeat is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine whether they are available. This uptime data can then be sent to your Vizion Elk app. [more](https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-overview.html)
+Heartbeat is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine whether they are available. This uptime data can then be sent to your Vizion Elastic app. [more](https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-overview.html)
 
-To install and configure Heartbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Heartbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-heartbeat.sh > install-config-heartbeat.sh; chmod a+x  install-config-heartbeat.sh; ./install-config-heartbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-heartbeat.sh > install-config-heartbeat.sh; chmod a+x  install-config-heartbeat.sh; ./install-config-heartbeat.sh << your Vizion Elastic url here >>
 ````
 
 The intallation script will prompt you to select the proper environment.
 
 Add the urls for Heartbeat to monitor by opening `/etc/hearbeat/heartbeat.yml` and adding them to the array in the field `urls:` under `heartbeat.monitors:` using [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Metricbeat error logs at `/var/log/heartbeat/heartbeat` or change the configuration at `/etc/heartbeat/heartbeat.yml`.
 
 ## Packetbeat
-Packetbeat is a real-time network packet analyzer that you can use with your Vizion ELK app to provide an application monitoring and performance analytics system. [more](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-overview.html)
+Packetbeat is a real-time network packet analyzer that you can use with your Vizion Elastic app to provide an application monitoring and performance analytics system. [more](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-overview.html)
 
-To install and configure Packetbeat, enter the following into your console along with the url given to you when you created your Vizion ELK app. Make sure you are using elevated privileges for the install.
+To install and configure Packetbeat, enter the following into your console along with the url given to you when you created your Vizion Elastic app. Make sure you are using elevated privileges for the install.
 
 ````
-curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-packetbeat.sh > install-config-packetbeat.sh; chmod a+x  install-config-packetbeat.sh; ./install-config-packetbeat.sh << your Vizion ELK url here >>
+curl https://olympus-io.github.io/vizion.ai/beat-install-scripts/install-config-packetbeat.sh > install-config-packetbeat.sh; chmod a+x  install-config-packetbeat.sh; ./install-config-packetbeat.sh << your Vizion Elastic url here >>
 ````
 
 The intallation script will prompt you to select the proper environment, then will install and complete basic configuration automatically.
 
-**You should now be sending data to your Vizion ELK app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
+**You should now be sending data to your Vizion Elastic app. View it in [Kibana](https://app.vizion.ai/app/kibana)**
 
 For debugging, you can view your Metricbeat error logs at `/var/log/packetbeat/packetbeat` or change the configuration at `/etc/packetbeat/packetbeat.yml`.
