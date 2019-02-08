@@ -166,13 +166,13 @@ echo "#============================= Elastic Cloud =============================
 echo "" >> /etc/filebeat/filebeat.yml
 echo "# These settings simplify using filebeat with the Elastic Cloud (https://cloud.elastic.co/)." >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
-echo "# The cloud.id setting overwrites the `output.elasticsearch.hosts` and" >> /etc/filebeat/filebeat.yml
-echo "# `setup.kibana.host` options." >> /etc/filebeat/filebeat.yml
-echo "# You can find the `cloud.id` in the Elastic Cloud web UI." >> /etc/filebeat/filebeat.yml
+echo "# The cloud.id setting overwrites the \`output.elasticsearch.hosts\` and" >> /etc/filebeat/filebeat.yml
+echo "# \`setup.kibana.host\` options." >> /etc/filebeat/filebeat.yml
+echo "# You can find the \`cloud.id\` in the Elastic Cloud web UI." >> /etc/filebeat/filebeat.yml
 echo "#cloud.id:" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
-echo "# The cloud.auth setting overwrites the `output.elasticsearch.username` and" >> /etc/filebeat/filebeat.yml
-echo "# `output.elasticsearch.password` settings. The format is `\<user\>:\<pass\>`." >> /etc/filebeat/filebeat.yml
+echo "# The cloud.auth setting overwrites the \`output.elasticsearch.username\` and" >> /etc/filebeat/filebeat.yml
+echo "# \`output.elasticsearch.password\` settings. The format is `\<user\>:\<pass\>`." >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "#================================ Outputs =====================================" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml

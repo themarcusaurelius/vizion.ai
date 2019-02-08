@@ -118,13 +118,13 @@ echo "#============================= Elastic Cloud =============================
 echo "" >> /etc/metricbeat/metricbeat.yml
 echo "# These settings simplify using metricbeat with the Elastic Cloud(https://cloud.elastic.co/)." >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
-echo "# The cloud.id setting overwrites the `output.elasticsearch.hosts` and" >> /etc/metricbeat/metricbeat.yml
-echo "# `setup.kibana.host` options." >> /etc/metricbeat/metricbeat.yml
-echo "# You can find the `cloud.id` in the Elastic Cloud web UI." >> /etc/metricbeat/metricbeat.yml
+echo "# The cloud.id setting overwrites the \`output.elasticsearch.hosts\` and" >> /etc/metricbeat/metricbeat.yml
+echo "# \`setup.kibana.host\` options." >> /etc/metricbeat/metricbeat.yml
+echo "# You can find the \`cloud.id\` in the Elastic Cloud web UI." >> /etc/metricbeat/metricbeat.yml
 echo "#cloud.id:" >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
-echo "# The cloud.auth setting overwrites the `output.elasticsearch.username` and" >> /etc/metricbeat/metricbeat.yml
-echo "# `output.elasticsearch.password` settings. The format is `<user>:<pass>`." >> /etc/metricbeat/metricbeat.yml
+echo "# The cloud.auth setting overwrites the \`output.elasticsearch.username\` and" >> /etc/metricbeat/metricbeat.yml
+echo "# \`output.elasticsearch.password\` settings. The format is \`<user>:<pass>\`." >> /etc/metricbeat/metricbeat.yml
 echo "#cloud.auth:" >> /etc/metricbeat/metricbeat.yml
 echo "" >> /etc/metricbeat/metricbeat.yml
 echo "#================================ Outputs =====================================" >> /etc/metricbeat/metricbeat.yml
