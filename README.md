@@ -13,4 +13,5 @@ If you don't Vizion ELK cluster, [get one started in minutes](https://app.vizion
 + #### [Store and search data using cURL](./curl-guide.md)
 
 ### Developer resources
-* https://github.com/elastic/elasticsearch-definitive-guide
+* [Elasticsearch: The Definitive Guide](https://github.com/elastic/elasticsearch-definitive-guide)
+* [Elasticsearch-JS](https://github.com/elastic/elasticsearch-js)
