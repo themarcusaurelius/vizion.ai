@@ -166,7 +166,7 @@ echo "  # Optional protocol and basic auth credentials." >> /etc/auditbeat/audit
 echo "  #protocol: \"https\"" >> /etc/auditbeat/auditbeat.yml
 echo "  username: \"${USERNAME}\"" >> /etc/auditbeat/auditbeat.yml
 echo "  password: \"${PASSWORD}\"" >> /etc/auditbeat/auditbeat.yml
-echo "  ssl.verification_mode: none" >> /etc/auditbeat/auditbeat.yml\
+echo "  ssl.verification_mode: none" >> /etc/auditbeat/auditbeat.yml
 echo "  timeout: 500" >> /etc/auditbeat/auditbeat.yml
 echo "" >> /etc/auditbeat/auditbeat.yml
 echo "#----------------------------- Logstash output --------------------------------" >> /etc/auditbeat/auditbeat.yml
