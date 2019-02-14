@@ -153,9 +153,9 @@ echo "  # Kibana Host" >> /etc/filebeat/filebeat.yml
 echo "  # Scheme and port can be left out and will be set to the default (http and 5601)" >> /etc/filebeat/filebeat.yml
 echo "  # In case you specify and additional path, the scheme is required: http://localhost:5601/path" >> /etc/filebeat/filebeat.yml
 echo "  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601" >> /etc/filebeat/filebeat.yml
-echo "  host: \"https://app.vizion.ai:443/kibana \"" >> /etc/filebeat/filebeat.yml
-echo "  username: ${USERNAME}" >> /etc/filebeat/filebeat.yml
-echo "  password: ${PASSWORD}" >> /etc/filebeat/filebeat.yml
+echo "  host: \"https://app.vizion.ai:443/kibana\"" >> /etc/filebeat/filebeat.yml
+echo "  username: \"${USERNAME}\"" >> /etc/filebeat/filebeat.yml
+echo "  password: \"${PASSWORD}\"" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "  # Kibana Space ID" >> /etc/filebeat/filebeat.yml
 echo "  # ID of the Kibana Space into which the dashboards should be loaded. By default," >> /etc/filebeat/filebeat.yml
