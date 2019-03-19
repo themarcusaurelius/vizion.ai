@@ -19,4 +19,5 @@ If you don't Vizion ELK cluster, [get one started in minutes](https://app.vizion
 ### Developer resources
 * [Elasticsearch: The Definitive Guide](https://github.com/elastic/elasticsearch-definitive-guide)
 * [Elasticsearch-JS](https://github.com/elastic/elasticsearch-js)
-* [Logstash Grok Patterns](https://github.com/hpcugent/logstash-patterns/blob/master/files/grok-patterns)
+* [Logstash Grok Patterns Quick Sheet](https://github.com/hpcugent/logstash-patterns/blob/master/files/grok-patterns)
+* [Logstash Grok Patterns Directory](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns)
