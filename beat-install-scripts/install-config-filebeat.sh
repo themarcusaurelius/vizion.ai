@@ -241,10 +241,12 @@ echo "#xpack.monitoring.elasticsearch:" >> /etc/filebeat/filebeat.yml
 
 if [[ $DOWNLOAD_TYPE -le 2 ]]; then #deb or rpm
   filebeat setup --template
+  sudo filebeat setup -e
   sudo service filebeat start
 else
   ./filebeat setup --template
   sudo chown root filebeat.yml 
   sudo chown root modules.d/system.yml 
-  sudo ./filebeat -e
+  sudo ./filebeat setup -e
+  sudo service filebeat start
 fi
