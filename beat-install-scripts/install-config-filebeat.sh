@@ -67,7 +67,7 @@ echo "  enabled: true" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "  # Paths that should be crawled and fetched. Glob based paths." >> /etc/filebeat/filebeat.yml
 echo "  paths:" >> /etc/filebeat/filebeat.yml
-echo "    - /var/log/*" >> /etc/filebeat/filebeat.yml
+echo "    - /var/log/*/*" >> /etc/filebeat/filebeat.yml
 echo "    #- c:\programdata\elasticsearch\logs\*" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "  # Exclude lines. A list of regular expressions to match. It drops the lines that are" >> /etc/filebeat/filebeat.yml
