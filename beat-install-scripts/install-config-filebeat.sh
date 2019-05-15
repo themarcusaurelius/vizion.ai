@@ -248,5 +248,5 @@ else
   sudo chown root filebeat.yml 
   sudo chown root modules.d/system.yml 
   sudo ./filebeat setup -e
-  sudo service filebeat start
+  sudo ./filebeat -e
 fi
