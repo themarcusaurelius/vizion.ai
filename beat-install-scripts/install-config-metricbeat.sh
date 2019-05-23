@@ -195,7 +195,7 @@ echo "#xpack.monitoring.elasticsearch:" >> /etc/metricbeat/metricbeat.yml
 if [[ $DOWNLOAD_TYPE -le 2 ]]; then #deb or rpm
   metricbeat setup --template
   sudo metricbeat setup -e
-  sudo service metricbeat start
+  sudo service metricbeat restart
 else
   ./metricbeat setup --template
   sudo chown root metricbeat.yml 
