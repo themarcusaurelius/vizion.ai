@@ -355,7 +355,6 @@ echo "# You can find the \`cloud.id\` in the Elastic Cloud web UI." >> /etc/file
 echo "#cloud.id:" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "# The cloud.auth setting overwrites the \`output.elasticsearch.username\` and" >> /etc/filebeat/filebeat.yml
-echo "# \`output.elasticsearch.password\` settings. The format is `\<user\>:\<pass\>`." >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
 echo "#================================ Outputs =====================================" >> /etc/filebeat/filebeat.yml
 echo "" >> /etc/filebeat/filebeat.yml
