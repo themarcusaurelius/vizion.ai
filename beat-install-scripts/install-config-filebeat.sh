@@ -242,7 +242,7 @@ echo "#xpack.monitoring.elasticsearch:" >> /etc/filebeat/filebeat.yml
 if [[ $DOWNLOAD_TYPE -le 2 ]]; then #deb or rpm
   filebeat setup --template
   sudo filebeat setup -e
-  sudo service filebeat start
+  sudo service filebeat restart
 else
   ./filebeat setup --template
   sudo chown root filebeat.yml 
@@ -250,3 +250,7 @@ else
   sudo ./filebeat setup -e
   sudo ./filebeat -e
 fi
+
+echo "To view your filebeat data log into your Kibana Portal at https://app.vizion.ai/kibana"
+echo "Login with the Kibana credentials below that were given when you created your Vizion.ai Elastic Stack"
+echo "username: ${USERNAME}  password: ${PASSWORD}"
