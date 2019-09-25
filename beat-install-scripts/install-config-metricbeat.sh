@@ -14,8 +14,8 @@ elif [[ $DOWNLOAD_TYPE -eq 2 ]]; then
 elif [[ $DOWNLOAD_TYPE -eq 3 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-darwin-x86_64.tar.gz
   mkdir /etc/metricbeat
+  tar -xvf metricbeat-6.5.4-darwin-x86_64.tar.gz /etc/metricbeat
   cd /etc/metricbeat
-  tar xzvf metricbeat-6.5.4-darwin-x86_64.tar.gz
 elif [[ $DOWNLOAD_TYPE -eq 4 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-linux-x86_64.tar.gz
   tar xzvf metricbeat-6.5.4-linux-x86_64.tar.gz /etc/metricbeat
