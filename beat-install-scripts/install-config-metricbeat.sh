@@ -13,10 +13,10 @@ elif [[ $DOWNLOAD_TYPE -eq 2 ]]; then
   sudo rpm -vi metricbeat-6.5.4-x86_64.rpm
 elif [[ $DOWNLOAD_TYPE -eq 3 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-darwin-x86_64.tar.gz
-  tar xzvf metricbeat-6.5.4-darwin-x86_64.tar.gz
+  tar xzvf metricbeat-6.5.4-darwin-x86_64.tar.gz /etc/metricbeat
 elif [[ $DOWNLOAD_TYPE -eq 4 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-linux-x86_64.tar.gz
-  tar xzvf metricbeat-6.5.4-linux-x86_64.tar.gz
+  tar xzvf metricbeat-6.5.4-linux-x86_64.tar.gz /etc/metricbeat
 else
   echo "That was not one of the options. Exiting."
   exit 1
@@ -197,6 +197,7 @@ if [[ $DOWNLOAD_TYPE -le 2 ]]; then #deb or rpm
   sudo metricbeat setup -e
   sudo service metricbeat restart
 else
+  cd /etc/metricbeat
   ./metricbeat setup --template
   sudo chown root metricbeat.yml 
   sudo chown root modules.d/system.yml 
