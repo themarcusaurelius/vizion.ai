@@ -14,7 +14,7 @@ elif [[ $DOWNLOAD_TYPE -eq 2 ]]; then
 elif [[ $DOWNLOAD_TYPE -eq 3 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-darwin-x86_64.tar.gz
   sudo tar -xvf filebeat-6.5.4-darwin-x86_64.tar.gz -C /etc
-  mv /etc/filebeat-6.5.4-darwin-x86_64.tar.gz /etc/filebeat
+  mv /etc/filebeat-6.5.4-darwin-x86_64 /etc/filebeat
 elif [[ $DOWNLOAD_TYPE -eq 4 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-linux-x86_64.tar.gz
   tar xzvf filebeat-6.5.4-linux-x86_64.tar.gz
