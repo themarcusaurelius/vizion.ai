@@ -13,9 +13,8 @@ elif [[ $DOWNLOAD_TYPE -eq 2 ]]; then
   sudo rpm -vi metricbeat-6.5.4-x86_64.rpm
 elif [[ $DOWNLOAD_TYPE -eq 3 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-darwin-x86_64.tar.gz
-  mkdir /etc/metricbeat
-  tar -xvf metricbeat-6.5.4-darwin-x86_64.tar.gz /etc/metricbeat
-  cd /etc/metricbeat
+  sudo tar -xvf metricbeat-6.5.4-darwin-x86_64.tar.gz -C /etc
+  mv /etc/metricbeat-6.5.4-darwin-x86_64 /etc/metricbeat
 elif [[ $DOWNLOAD_TYPE -eq 4 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.5.4-linux-x86_64.tar.gz
   tar xzvf metricbeat-6.5.4-linux-x86_64.tar.gz /etc/metricbeat
