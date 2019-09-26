@@ -13,7 +13,8 @@ elif [[ $DOWNLOAD_TYPE -eq 2 ]]; then
   sudo rpm -vi filebeat-6.5.4-x86_64.rpm
 elif [[ $DOWNLOAD_TYPE -eq 3 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-darwin-x86_64.tar.gz
-  tar xzvf filebeat-6.5.4-darwin-x86_64.tar.gz
+  sudo tar -xvf filebeat-6.5.4-darwin-x86_64.tar.gz -C /etc
+  mv /etc/filebeat-6.5.4-darwin-x86_64.tar.gz /etc/filebeat
 elif [[ $DOWNLOAD_TYPE -eq 4 ]]; then
   curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-linux-x86_64.tar.gz
   tar xzvf filebeat-6.5.4-linux-x86_64.tar.gz
@@ -245,6 +246,7 @@ if [[ $DOWNLOAD_TYPE -le 2 ]]; then #deb or rpm
   sudo filebeat modules enable system
   sudo service filebeat restart
 else
+  cd /etc/filebeat
   ./filebeat setup --template
   sudo chown root filebeat.yml 
   sudo chown root modules.d/system.yml 
